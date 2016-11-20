@@ -78,6 +78,9 @@
             "description": "Name and corresponding file for environment config.",
             "type": "object",
             "additionalProperties": true
+          },
+          "publicPath": {
+            "type": "string"
           }
         },
         "additionalProperties": false

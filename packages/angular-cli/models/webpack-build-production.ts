@@ -23,9 +23,10 @@ export const getWebpackProdConfigPartial = function(projectRoot: string, appConf
   return {
     output: {
       path: path.resolve(projectRoot, appConfig.outDir),
-      filename: '[name].[chunkhash].bundle.js',
+      filename: '[name].bundle.js',
       sourceMapFilename: '[name].[chunkhash].bundle.map',
-      chunkFilename: '[id].[chunkhash].chunk.js'
+      chunkFilename: '[id].[chunkhash].chunk.js',
+      publicPath: appConfig.publicPath || ''
     },
     module: {
       rules: [
@@ -50,7 +51,7 @@ export const getWebpackProdConfigPartial = function(projectRoot: string, appConf
       ]
     },
     plugins: [
-      new ExtractTextPlugin('[name].[contenthash].bundle.css'),
+      new ExtractTextPlugin('[name].bundle.css'),
       new WebpackMd5Hash(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')

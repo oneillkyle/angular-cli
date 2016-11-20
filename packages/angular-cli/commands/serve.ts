@@ -28,6 +28,7 @@ export interface ServeTaskOptions {
   aot?: boolean;
   sourcemap?: boolean;
   open?: boolean;
+  publicPath: string;
 }
 
 const ServeCommand = Command.extend({
@@ -90,6 +91,7 @@ const ServeCommand = Command.extend({
       aliases: ['o'],
       description: 'Opens the url in default browser',
     },
+    { name: 'public-path',              type: String,  default: '',      aliases: ['pp'] },
   ],
 
   run: function(commandOptions: ServeTaskOptions) {
