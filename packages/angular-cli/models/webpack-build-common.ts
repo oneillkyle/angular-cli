@@ -32,6 +32,9 @@ export function getWebpackCommonConfig(
   if (appConfig.styles.length > 0) { entry['styles'] = styles; }
   if (appConfig.scripts.length > 0) { entry['scripts'] = scripts; }
 
+  if(!appConfig.publicPaths) { appConfig.publicPaths = {}; }
+  let publicPath = appConfig.publicPaths[environment] || appConfig.publicPath || '';
+
   return {
     devtool: sourcemap ? 'source-map' : 'eval',
     resolve: {
@@ -45,7 +48,7 @@ export function getWebpackCommonConfig(
       filename: '[name].bundle.js',
       sourceMapFilename: '[name].bundle.map',
       chunkFilename: '[id].chunk.js',
-      publicPath: appConfig.publicPath || ''
+      publicPath: publicPath
     },
     module: {
       rules: [

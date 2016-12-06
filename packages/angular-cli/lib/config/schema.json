@@ -81,6 +81,12 @@
           },
           "publicPath": {
             "type": "string"
+          },
+          "publicPaths": {
+            "description": "Name and corresponding public path for environments.",
+            "type": "object",
+            "additionalProperties": true,
+            "default": {}
           }
         },
         "additionalProperties": false
