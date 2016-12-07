@@ -32,8 +32,8 @@ export function getWebpackCommonConfig(
   if (appConfig.styles.length > 0) { entry['styles'] = styles; }
   if (appConfig.scripts.length > 0) { entry['scripts'] = scripts; }
 
-  if(!appConfig.publicPaths) { appConfig.publicPaths = {}; }
-  let publicPath = appConfig.publicPaths[environment] || appConfig.publicPath || '';
+  let publicPaths = appConfig.publicPaths || {};
+  let publicPath = publicPaths[environment] || appConfig.publicPath || '';
 
   return {
     devtool: sourcemap ? 'source-map' : 'eval',
